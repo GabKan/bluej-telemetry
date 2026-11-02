@@ -1,0 +1,8 @@
+/src/main/java/org/comp3607/model/ @memberA-username @memberB-username @memberC-username
+/src/main/java/org/comp3607/api/ @memberA-username @memberB-username @memberC-username
+/src/main/java/org/comp3607/collector/ @memberA-username
+/src/main/java/org/comp3607/bluej/ @memberA-username
+/src/main/java/org/comp3607/json/ @memberB-username
+/src/main/java/org/comp3607/export/ @memberB-username
+/src/main/java/org/comp3607/analytics/ @memberC-username
+/src/main/java/org/comp3607/report/ @memberC-username
