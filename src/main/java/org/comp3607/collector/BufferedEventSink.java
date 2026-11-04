@@ -2,6 +2,7 @@ package org.comp3607.collector;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.comp3607.api.EventSink;
 import org.comp3607.api.EventSource;
 import org.comp3607.model.SessionMetadata;
@@ -20,20 +21,21 @@ public class BufferedEventSink implements EventSink, EventSource {
 
     @Override
     public void accept(TelemetryEvent event) {
-        throw new UnsupportedOperationException("TODO Member A");
+        events.add(event);
     }
 
     @Override
     public List<TelemetryEvent> snapshot() {
-        throw new UnsupportedOperationException("TODO Member A");
+        // Make a separate list so callers cannot change the event buffer itself.
+        return new ArrayList<>(events);
     }
 
     @Override
     public SessionMetadata metadata() {
-        throw new UnsupportedOperationException("TODO Member A");
+        return metadata;
     }
 
     public void updateMetadata(SessionMetadata updatedMetadata) {
-        throw new UnsupportedOperationException("TODO Member A");
+        metadata = updatedMetadata;
     }
 }

@@ -11,7 +11,25 @@
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Change this if BlueJ is installed somewhere other than /opt/bluej. -->
+        <bluej.home>/opt/bluej</bluej.home>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>local.bluej</groupId>
+            <artifactId>bluej-extension-api</artifactId>
+            <version>3.4</version>
+            <scope>system</scope>
+            <systemPath>${bluej.home}/bluej.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.11.4</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -19,6 +37,23 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.comp3607.bluej.TelemetryExtension</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -56,7 +91,6 @@
         </plugins>
     </build>
 
-    <!-- TODO: Add the BlueJ extension API jar when its source and version are confirmed; it is not on Maven Central. -->
     <!-- TODO: Add the team-selected JSON library dependency. -->
     <!-- TODO: Add the team-selected PDF library dependency. -->
     <!-- TODO: Add the team-selected chart library dependency. -->
